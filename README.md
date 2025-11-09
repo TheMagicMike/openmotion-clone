@@ -1,5 +1,7 @@
 # OpenMotion: Free, Dev-Friendly Motion-Style Planner
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/TheMagicMike/openmotion-clone)
+
 **OpenMotion** is an open-source, personal-use clone inspired by Motion.app's workflow. Deployable on Netlify with a single click after pushing to GitHub.
 
 ## Features
