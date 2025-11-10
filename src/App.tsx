@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
-import { CheckCircle2, Circle, Clock, Calendar, Trash2, Plus, Play } from 'lucide-react'
+import { CheckCircle2, Circle, Clock, Calendar, Trash2, Plus, Play, Download } from 'lucide-react'
 
 type Priority = 'low' | 'medium' | 'high' | 'asap'
 
@@ -57,6 +57,36 @@ function App() {
     return colors[p]
   }
 
+    const exportToCalendar = () => {
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//OpenMotion//Task Planner//EN',
+      ...tasks.filter(t => !t.completed).map(task => {
+        const start = dayjs().format('YYYYMMDDTHHmmss')
+        const end = dayjs().add(task.duration, 'minute').format('YYYYMMDDTHHmmss')
+        return [
+          'BEGIN:VEVENT',
+          `UID:${task.id}@openmotion.app`,
+          `DTSTAMP:${start}`,
+          `DTSTART:${start}`,
+          `DTEND:${end}`,
+          `SUMMARY:${task.title}`,
+          `DESCRIPTION:Priority: ${task.priority.toUpperCase()}`,
+          'END:VEVENT'
+        ].join('\r\n')
+      }),
+      'END:VCALENDAR'
+    ].join('\r\n')
+    
+    const blob = new Blob([icsContent], { type: 'text/calendar' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    link.download = `tasks-${dayjs().format('YYYY-MM-DD')}.ics`
+    link.click()
+    URL.revokeObjectURL(link.href)
+  }
+
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px', fontFamily: 'system-ui' }}>
       <h1 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '30px' }}>OpenMotion - Task Planner</h1>
@@ -98,11 +128,18 @@ function App() {
       </div>
 
       <div style={{ background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>Tasks ({tasks.filter(t => !t.completed).length})</h2>
         {tasks.length === 0 ? (
           <p style={{ color: '#9ca3af' }}>No tasks yet. Add your first task above!</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        {tasks.length > 0 && (
+          <button onClick={exportToCalendar} style={{ background: '#8b5cf6', color: 'white', padding: '12px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}>
+            <Download size={18} /> Export to Calendar
+          </button>
+        )}
+      </div>
             {tasks.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', opacity: task.completed ? 0.6 : 1 }}>
                 <button onClick={() => toggleComplete(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
