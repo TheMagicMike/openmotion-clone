@@ -140,6 +140,7 @@ function App() {
           </button>
         )}
       </div>
+              )}
             {tasks.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', opacity: task.completed ? 0.6 : 1 }}>
                 <button onClick={() => toggleComplete(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
