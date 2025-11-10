@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
-import { CheckCircle2, Circle, Clock, Calendar, Trash2, Edit2, Plus, Play } from 'lucide-react'
+import { CheckCircle2, Circle, Clock, Calendar, Trash2, Plus, Play } from 'lucide-react'
 
 type Priority = 'low' | 'medium' | 'high' | 'asap'
 
@@ -17,7 +17,6 @@ interface Task {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([])
-  const [quickAdd, setQuickAdd] = useState('')
   const [showAdd, setShowAdd] = useState(false)
   const [newTask, setNewTask] = useState({ title: '', duration: 60, priority: 'medium' as Priority, due: '' })
 
