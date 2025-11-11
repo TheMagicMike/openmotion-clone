@@ -197,7 +197,7 @@ function App() {
             {tasks.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', opacity: task.completed ? 0.6 : 1, background: task.completed ? '#f9fafb' : 'white' }}>
                 <button onClick={() => toggleComplete(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}>
-                  {task.completed ? <CheckCircle2 size={24} color10b981 /> : <Circle size={24} color9ca3af />}
+                  {task.completed ? <CheckCircle2 size={24} color="#10b981" /> : <Circle size={24} color="#9ca3af" />}
                 </button>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h3 style={{ fontSize: '16px', fontWeight: '500', textDecoration: task.completed ? 'line-through' : 'none', marginBottom: '4px' }}>{task.title}</h3>
