@@ -133,13 +133,6 @@ function App() {
         {tasks.length === 0 ? (
           <p style={{ color: '#9ca3af' }}>No tasks yet. Add your first task above!</p>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        {tasks.length > 0 && (
-          <button onClick={exportToCalendar} style={{ background: '#8b5cf6', color: 'white', padding: '12px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}>
-            <Download size={18} /> Export to Calendar
-          </button>
-        )}
-      </div>
               )}
             {tasks.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', opacity: task.completed ? 0.6 : 1 }}>
