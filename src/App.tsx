@@ -37,8 +37,7 @@ function App() {
       due: newTask.due || undefined,
       completed: false,
       tags: [],
-      scheduledStart: dayjs().add(15, 'minute').format()
-    }
+      scheduledStart: newTask.due || dayjs().add(15, 'minute').format()    }
     setTasks([...tasks, task])
     setNewTask({ title: '', duration: 60, priority: 'medium', due: '' })
     setShowAdd(false)
