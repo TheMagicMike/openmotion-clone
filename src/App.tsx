@@ -155,24 +155,24 @@ function App() {
           </button>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <input value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} placeholder=\"Task title\" style={{ padding: '12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '16px' }} />
+            <input value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} placeholder=Task title style={{ padding: '12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '16px' }} />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '14px', marginBottom: '4px', color: '#6b7280' }}>Duration (min)</label>
-                <input type=\"number\" value={newTask.duration} onChange={(e) => setNewTask({ ...newTask, duration: parseInt(e.target.value) })} style={{ width: '100%', padding: '8px', border: '1px solid #d1d5db', borderRadius: '6px' }} />
+                <input type=number value={newTask.duration} onChange={(e) => setNewTask({ ...newTask, duration: parseInt(e.target.value) })} style={{ width: '100%', padding: '8px', border: '1px solid #d1d5db', borderRadius: '6px' }} />
               </div>
               <div>
                 <label style={{ display: 'block', fontSize: '14px', marginBottom: '4px', color: '#6b7280' }}>Priority</label>
                 <select value={newTask.priority} onChange={(e) => setNewTask({ ...newTask, priority: e.target.value as Priority })} style={{ width: '100%', padding: '8px', border: '1px solid #d1d5db', borderRadius: '6px' }}>
-                  <option value=\"low\">Low</option>
-                  <option value=\"medium\">Medium</option>
-                  <option value=\"high\">High</option>
-                  <option value=\"asap\">ASAP</option>
+                  <option value=low>Low</option>
+                  <option value=medium>Medium</option>
+                  <option value=high>High</option>
+                  <option value=asap>ASAP</option>
                 </select>
               </div>
               <div>
                 <label style={{ display: 'block', fontSize: '14px', marginBottom: '4px', color: '#6b7280' }}>Due Date</label>
-                <input type=\"datetime-local\" value={newTask.due} onChange={(e) => setNewTask({ ...newTask, due: e.target.value })} style={{ width: '100%', padding: '8px', border: '1px solid #d1d5db', borderRadius: '6px' }} />
+                <input type=datetime-local value={newTask.due} onChange={(e) => setNewTask({ ...newTask, due: e.target.value })} style={{ width: '100%', padding: '8px', border: '1px solid #d1d5db', borderRadius: '6px' }} />
               </div>
             </div>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -197,7 +197,7 @@ function App() {
             {tasks.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', border: '1px solid #e5e7eb', borderRadius: '8px', opacity: task.completed ? 0.6 : 1, background: task.completed ? '#f9fafb' : 'white' }}>
                 <button onClick={() => toggleComplete(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}>
-                  {task.completed ? <CheckCircle2 size={24} color=\"#10b981\" /> : <Circle size={24} color=\"#9ca3af\" />}
+                  {task.completed ? <CheckCircle2 size={24} color=#10b981 /> : <Circle size={24} color=#9ca3af />}
                 </button>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h3 style={{ fontSize: '16px', fontWeight: '500', textDecoration: task.completed ? 'line-through' : 'none', marginBottom: '4px' }}>{task.title}</h3>
